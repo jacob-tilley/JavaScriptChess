@@ -1,3 +1,23 @@
-th {
-    border: black solid 1px
+th, td{
+    width: 50px;
+    height: 50px;
+    border: 1px solid black;
+}
+
+table{
+    border-collapse: collapse;
+    border: 2px solid grey;
+}
+
+/* light square: #ffce90, dark: #d18b47
+tbody:nth-child(even) tr:nth-child(odd) {
+    background-color: red(for personal ref) */
+
+tbody tr:nth-child(odd) th:nth-child(even),
+tbody tr:nth-child(even) th:nth-child(odd):not(:first-child) {
+    background-color: #ffce90;
+}
+tbody tr:nth-child(odd) th:nth-child(odd):not(:first-child),
+tbody tr:nth-child(even) th:nth-child(even) {
+    background-color: #d18b47;
 }
