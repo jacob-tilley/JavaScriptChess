@@ -4,6 +4,7 @@ const pieces={
 };
 
 const boardBody= document.getElementById("board-body");
+let selectedSquare= null;
 function createBoard(){
     const board=[
         [pieces.b_r, pieces.b_kn, pieces.b_b, pieces.b_q, pieces.b_k, pieces.b_b, pieces.b_kn, pieces.b_r],
@@ -18,18 +19,18 @@ function createBoard(){
 
     for(let i=0; i< board.length; i++){
         const tr= document.createElement('tr');
-        const th= document.createElement('th');
-        th.innerText= 8-i
-        tr.appendChild(th);
+        const rowLabel= document.createElement('th');
+        rowLabel.innerText= 8-i;
+        tr.appendChild(rowLabel);
         const currentRow= board[i];
-        for(let j=0; j < currentRow.length; j++){
-            const th= document.createElement('th');
+        for(let j=0; j < currentRow.length; j++){ 
+            const td= document.createElement('td'); //table_data cells created for playable sqrs
             let piece= currentRow[j];
-            th.textContent= piece;
-            th.onclick= function(){
-                handleSquareClick(th);
+            td.textContent= piece;
+            td.onclick= function(){
+                handleSquareClick(td);
             };
-            tr.appendChild(th);
+            tr.appendChild(td);
 
         }
 
@@ -37,11 +38,24 @@ function createBoard(){
     }
     
 }
-createBoard();
-function handleSquareClick(element){
-    console.log("clicked");
-}
 
+function handleSquareClick(element){
+    if (selectedSquare!== null){
+        if (selectedSquare === element){
+            selectedSquare = null;
+            return;
+        }
+        element.textContent= selectedSquare.textContent;
+        selectedSquare.textContent= "";
+        selectedSquare= null;
+    }else{
+        if(element.textContent!==""){
+            selectedSquare= element;
+        }
+    }
+
+}
+createBoard();
 
 
 
