@@ -9,10 +9,10 @@
     </head>
     <body>
         <div id="controls">
-            <button id="btn-standard">Standard game</button>
-            <button id="btn-blitz">Blitz Game</button>
-            <button id="btn-restart">Restart</button>
-            <button id="btn-forfeit">Forfeit</button>
+            <button id="btn-standard" onclick="startGame('standard')">Standard game</button>
+            <button id="btn-blitz" onclick="startGame('blitz')">Blitz Game</button>
+            <button id="btn-restart" onclick="restartGame()">Restart</button>
+            <button id="btn-forfeit" onclick="forfeitGame()">Forfeit</button>
         </div>
         <div id="timer-container">
             <span id="timer-white"> White: 5:00</span> |

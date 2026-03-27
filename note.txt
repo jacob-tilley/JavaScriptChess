@@ -3,4 +3,4 @@
 2.  ad css to visualize
 3.  how do i create pieces???(w3schools chess symbols)
 4.  how can I bring pieces to their position?
-5.    
+5.      NEED TIMER LOGIC!!

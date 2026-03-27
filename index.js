@@ -4,7 +4,11 @@ const pieces={
 };
 
 const boardBody= document.getElementById("board-body");
+//state variables
 let selectedSquare= null;
+let gameStarted= false;
+let gameType= "";
+let currentTurn= "white";
 function createBoard(){
     const board=[
         [pieces.b_r, pieces.b_kn, pieces.b_b, pieces.b_q, pieces.b_k, pieces.b_b, pieces.b_kn, pieces.b_r],
@@ -38,8 +42,37 @@ function createBoard(){
     }
     
 }
+/*let selectedSquare= null;
+let gameStarted= false;
+let gameType= "";
+let currentTurn= "white"; for my visual sake */
+function startGame(type){
+    gameStarted= true;
+    gameType= type;
+    if(type=== "blitz"){
+        document.getElementById("timer-container");
+    }
+    alert("Game Started!" + type + "mode activated. White's Turn");
+
+}
+
+function restartgame(){
+    location.reload();
+}
+
+function forfeitGame(){
+    if (!gameStarted)
+        return;
+    alert(currentTurn + " has forfeited. Game Over!");
+    gameStarted=false;
+}
 
 function handleSquareClick(element){
+    if(!gameStarted){
+        alert("Please select a game type!");
+        return;
+    }
+
     if (selectedSquare!== null){
         if (selectedSquare === element){
             selectedSquare = null;
@@ -48,6 +81,8 @@ function handleSquareClick(element){
         element.textContent= selectedSquare.textContent;
         selectedSquare.textContent= "";
         selectedSquare= null;
+        currentTurn= (currentTurn==="white")? "black":"white";
+        console.log("Turn:  "+ currentTurn);
     }else{
         if(element.textContent!==""){
             selectedSquare= element;
