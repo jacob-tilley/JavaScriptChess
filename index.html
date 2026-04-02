@@ -8,6 +8,16 @@
         
     </head>
     <body>
+        <div id="controls">
+            <button id="btn-standard" onclick="startGame('standard')">Standard game</button>
+            <button id="btn-blitz" onclick="startGame('blitz')">Blitz Game</button>
+            <button id="btn-restart" onclick="restartGame()">Restart</button>
+            <button id="btn-forfeit" onclick="forfeitGame()">Forfeit</button>
+        </div>
+        <div id="timer-container">
+            <span id="timer-white"> White: 5:00</span> |
+            <span id="timer-black"> Balck: 5:00</span>
+        </div>
         <table>
             <thead>
                 <tr>
@@ -23,94 +33,7 @@
                 </tr>
             </thead>
             <tbody id="board-body">
-                <tr>
-                    <th>8</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                <tr>
-                    <th>7</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                <tr>
-                    <th>6</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                <tr>
-                    <th>5</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                <tr>
-                    <th>4</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                <tr>
-                    <th>3</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                <tr>
-                    <th>2</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                <tr>
-                    <th>1</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                </tr>
+                
             </tbody>
             <tfoot>
                 <tr>
