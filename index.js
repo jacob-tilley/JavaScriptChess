@@ -137,6 +137,22 @@ function isValidMove(startSquare, targetSquare){
             return false;
         }
     }
+    if (piece === "♗" || piece === "♝") {
+        if (rowDiff === colDiff) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    //rook+bishop
+    if (piece === "♕" || piece === "♛") {
+        if (rowDiff === 0 || colDiff === 0 || rowDiff === colDiff) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     return true;
 }
 
