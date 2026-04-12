@@ -144,7 +144,7 @@ function isValidMove(startSquare, targetSquare){
             return false;
         }
     }
-    //rook+bishop
+    //rook+bishop==queen
     if (piece === "♕" || piece === "♛") {
         if (rowDiff === 0 || colDiff === 0 || rowDiff === colDiff) {
             return true;
@@ -152,7 +152,32 @@ function isValidMove(startSquare, targetSquare){
             return false;
         }
     }
-
+    //The pawns can move to the squares in front of them(1space forward& 2space).
+    //also it can diagnoally capture.
+    if(piece === "♙"){
+        if(startCol===endCol && startRow-endRow === 1 && targetSquare.textContent === ""){
+            return true;
+        }
+        if(startCol===endCol && startRow === 6 && startRow-endRow === 2 && targetSquare.textContent === "") {
+            return true;
+        }
+        if(rowDiff=== 1 && colDiff === 1 && startRow-endRow === 1 && targetSquare.textContent !== "") {
+            return true;
+        }
+        return false;    
+    }
+    if(piece==="♟"){
+        if(startCol===endCol && endRow-startRow === 1 && targetSquare.textContent === "") {
+            return true;
+        }
+        if(startCol===endCol && startRow === 1 && endRow-startRow === 2 && targetSquare.textContent === "") {
+            return true;
+        }
+        if(rowDiff === 1 && colDiff === 1 && endRow-startRow === 1 && targetSquare.textContent !== "") {
+            return true;
+        }
+        return false;
+    }
     return true;
 }
 
