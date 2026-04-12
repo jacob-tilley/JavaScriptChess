@@ -121,6 +121,22 @@ function isValidMove(startSquare, targetSquare){
             return false;
         }
     }
+    //king r1c1 any direction rc_diff <=1??
+    if (piece === "♔" || piece === "♚") {
+        if (rowDiff <= 1 && colDiff <= 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    //rook rc==same
+    if (piece === "♖" || piece === "♜") {
+        if (rowDiff === 0 || colDiff === 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     return true;
 }
 
