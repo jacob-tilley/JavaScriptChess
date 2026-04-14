@@ -87,13 +87,16 @@ function startGame(type){
         updateTimerDisplay();
         startClocks();
     }else{
-        document.getElementById("timer-container").style.display="none";
-        clearInterval(timerInterval);
+        document.getElementById("timer-container").style.display="block";
+        whiteTime=5400000;
+        blackTime=5400000;
+        updateTimerDisplay();
+        startClocks();
     }
     alert(`Game Started! ${type}  mode activated. White's Turn`);
 }
 
-function restartgame(){
+function restartGame(){
     location.reload();
 }
 
@@ -235,9 +238,19 @@ function handleSquareClick(element){
         }
     }
 }
-createBoard();
 
-
-
-
-
+document.addEventListener("DOMContentLoaded", () => {
+    createBoard();
+});
+document.getElementById("btn-standard").addEventListener("click", () => {
+    startGame('standard');
+});
+document.getElementById("btn-blitz").addEventListener("click", () => {
+    startGame('blitz');
+});
+document.getElementById("btn-restart").addEventListener("click", () => {
+    restartGame();
+});
+document.getElementById("btn-standard").addEventListener("click", () => {
+    forfeitGame();
+});
