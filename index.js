@@ -48,8 +48,6 @@ function createBoard(){
             if (piece!==""){
                 let img= document.createElement("img");
                 img.src= pieceImages[piece];
-                img.style.width= "60px";
-                img.style.pointerEvents="none";
                 td.appendChild(img);
             }
             td.onclick= function(){
@@ -118,6 +116,13 @@ function forfeitGame(){
         return;
     alert(`${currentTurn} has forfeited. Game Over!`);
     gameStarted=false;
+}
+function offerDraw() {
+    if (!gameStarted) return;
+    
+    alert("Players have agreed to a Draw!! Game Over.");
+    gameStarted = false;
+    clearInterval(timerInterval);
 }
 //tactical radar
 function isPathClear(startRow, startCol, endRow, endCol) {
@@ -254,6 +259,17 @@ function handleSquareClick(element){
         selectedSquare.dataset.piece= "";
         selectedSquare.innerHTML="";
         selectedSquare= null;
+        let landedRow = +element.dataset.row;
+        if (element.dataset.piece === "♙" && landedRow === 0){
+            element.dataset.piece = "♕";
+            element.innerHTML = `<img src="${pieceImages["♕"]}">`;
+            alert("White Pawn promoted to a Queen!");
+        }
+        else if (element.dataset.piece === "♟" && landedRow === 7){
+            element.dataset.piece = "♛";
+            element.innerHTML = `<img src="${pieceImages["♛"]}">`;
+            alert("Black Pawn promoted to a Queen!");
+        }
         currentTurn= (currentTurn==="white")? "black":"white";
         console.log("Turn:  "+ currentTurn);
     }else{
@@ -288,3 +304,6 @@ document.getElementById("btn-restart").addEventListener("click", () => {
 document.getElementById("btn-forfeit").addEventListener("click", () => {
     forfeitGame();
 });
+document.getElementById("offer-draw").addEventListener("click", ()=>{
+    offerDraw();
+})
