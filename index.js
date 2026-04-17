@@ -106,6 +106,25 @@ function forfeitGame(){
     alert(`${currentTurn} has forfeited. Game Over!`);
     gameStarted=false;
 }
+//tactical radar
+function isPathClear(startRow, startCol, endRow, endCol) {
+    let rowStep = Math.sign(endRow - startRow);
+    let colStep = Math.sign(endCol - startCol);
+    let currentRow = startRow + rowStep;
+    let currentCol = startCol + colStep;
+
+    while (currentRow !== endRow || currentCol !== endCol) {
+        
+        let square = document.querySelector(`td[data-row='${currentRow}'][data-col='${currentCol}']`);
+        if (square.textContent !== "") {
+            return false; 
+        }
+        currentRow += rowStep;
+        currentCol += colStep;
+    }
+
+    return true; 
+}
 
 function isValidMove(startSquare, targetSquare){
     let piece= startSquare.textContent
@@ -162,7 +181,7 @@ function isValidMove(startSquare, targetSquare){
             return true;
         }
         if(startCol===endCol && startRow === 6 && startRow-endRow === 2 && targetSquare.textContent === "") {
-            return true;
+            return isPathClear(startRow, startCol, endRow, endCol);
         }
         if(rowDiff=== 1 && colDiff === 1 && startRow-endRow === 1 && targetSquare.textContent !== "") {
             return true;
@@ -174,14 +193,14 @@ function isValidMove(startSquare, targetSquare){
             return true;
         }
         if(startCol===endCol && startRow === 1 && endRow-startRow === 2 && targetSquare.textContent === "") {
-            return true;
+            return isPathClear(startRow, startCol, endRow, endCol);
         }
         if(rowDiff === 1 && colDiff === 1 && endRow-startRow === 1 && targetSquare.textContent !== "") {
             return true;
         }
         return false;
     }
-    return true;
+    return false;
 }
 
 function handleSquareClick(element){
